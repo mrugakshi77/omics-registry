@@ -1,0 +1,18 @@
+[project]
+name = "omics-registry"
+version = "0.1.0"
+description = "A small, production-style genomics metadata, provenance, and cohort-management platform, inspired by Isabl."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+omics = "omics_registry.cli.main:app"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

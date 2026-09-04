@@ -1,0 +1,25 @@
+[workspace]
+name = "omics-registry"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.12.*"
+
+[pypi-dependencies]
+omics-registry = { path = ".", editable = true }
+fastapi = "*"
+uvicorn = { extras = ["standard"], version = "*" }
+sqlalchemy = "*"
+psycopg2-binary = "*"
+alembic = "*"
+pydantic = "*"
+pydantic-settings = "*"
+typer = "*"
+rich = "*"
+pytest = "*"
+pytest-cov = "*"
+httpx = "*"
+ruff = "*"
+mypy = "*"
+faker = "*"
