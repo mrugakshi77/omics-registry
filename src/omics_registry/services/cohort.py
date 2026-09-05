@@ -52,4 +52,8 @@ def find_cohort(
             "assays": [a.value for a in assays],
         },
     )
-    return [dict(row._mapping) for row in result]
+    rows = [dict(row._mapping) for row in result]
+    for row in rows:
+        if isinstance(row["assays"], str):
+            row["assays"] = row["assays"].strip("{}").split(",")
+    return rows
