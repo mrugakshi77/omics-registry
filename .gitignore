@@ -16,3 +16,4 @@ build/
 .pixi/*
 !.pixi/config.toml
 data/gdc_snapshot.json
+cohort.csv

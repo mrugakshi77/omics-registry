@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from omics_registry.config import get_settings
+from contextlib import contextmanager
 
 settings = get_settings()
 
@@ -17,5 +18,21 @@ def get_db() -> Generator[Session, None, None]:
     db = SessionLocal()
     try:
         yield db
+    finally:
+        db.close()
+
+@contextmanager
+def session_scope():
+    """Context manager for scripts/CLI commands (outside a FastAPI request).
+
+    Commits on success, rolls back on any exception, always closes.
+    """
+    db = SessionLocal()
+    try:
+        yield db
+        db.commit()
+    except Exception:
+        db.rollback()
+        raise
     finally:
         db.close()
