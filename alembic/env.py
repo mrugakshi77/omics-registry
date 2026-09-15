@@ -1,13 +1,11 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 
+import omics_registry.models  # noqa: F401  (registers all models on Base.metadata)
 from alembic import context
-
 from omics_registry.config import get_settings
 from omics_registry.db.base import Base
-import omics_registry.models  # noqa: F401  (registers all models on Base.metadata)
 
 config = context.config
 

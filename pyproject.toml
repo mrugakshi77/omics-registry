@@ -20,3 +20,7 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v"
+
+[tool.ruff.lint.per-file-ignores]
+"src/omics_registry/api/*.py" = ["B008"]
+"src/omics_registry/cli/*.py" = ["B008"]

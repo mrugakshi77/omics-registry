@@ -546,7 +546,7 @@ packages:
 - pypi: ./
   name: omics-registry
   version: 0.1.0
-  sha256: 95957dfd22786197d05c3e3feb0dea656aacfb754b6d04e1f02adc873515a40d
+  sha256: e97f5c217b75ffae4e6d0fa2263c66b4a5b74010faababb708ed5338f7e6c123
   requires_python: '>=3.11'
 - conda: https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.4-h781a0a9_0.conda
   sha256: 4747b2d6a8336f52343bceb8a1ebf41a9e6e665b9d2e3f989972de53a310599e

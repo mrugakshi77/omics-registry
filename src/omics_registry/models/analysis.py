@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from typing import TYPE_CHECKING
 
 from sqlalchemy import DateTime, Enum, ForeignKey, String, func
 from sqlalchemy.dialects.postgresql import JSONB
@@ -9,6 +10,9 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from omics_registry.db.base import Base
 from omics_registry.models.enums import AnalysisStatus
 
+if TYPE_CHECKING:
+    from omics_registry.models.experiment import Experiment
+    from omics_registry.models.result_file import ResultFile
 
 class Analysis(Base):
     """A pipeline run against an experiment, with full provenance."""
@@ -35,5 +39,5 @@ class Analysis(Base):
     completed_at: Mapped[dt.datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    experiment: Mapped["Experiment"] = relationship(back_populates="analyses")
-    result_files: Mapped[list["ResultFile"]] = relationship(back_populates="analysis", cascade="all, delete-orphan")
+    experiment: Mapped[Experiment] = relationship(back_populates="analyses")
+    result_files: Mapped[list[ResultFile]] = relationship(back_populates="analysis", cascade="all, delete-orphan")

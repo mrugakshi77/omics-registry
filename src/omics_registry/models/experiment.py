@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from typing import TYPE_CHECKING
 
 from sqlalchemy import DateTime, Enum, ForeignKey, String, func
 from sqlalchemy.dialects.postgresql import JSONB
@@ -9,6 +10,9 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from omics_registry.db.base import Base
 from omics_registry.models.enums import AssayType
 
+if TYPE_CHECKING:
+    from omics_registry.models.analysis import Analysis
+    from omics_registry.models.sample import Sample
 
 class Experiment(Base):
     __tablename__ = "experiments"
@@ -29,5 +33,5 @@ class Experiment(Base):
     experiment_metadata: Mapped[dict] = mapped_column(JSONB, default=dict, server_default="{}")
     created_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    sample: Mapped["Sample"] = relationship(back_populates="experiments")
-    analyses: Mapped[list["Analysis"]] = relationship(back_populates="experiment", cascade="all, delete-orphan")
+    sample: Mapped[Sample] = relationship(back_populates="experiments")
+    analyses: Mapped[list[Analysis]] = relationship(back_populates="experiment", cascade="all, delete-orphan")
