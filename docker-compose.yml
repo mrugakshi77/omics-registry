@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: omics
+      POSTGRES_PASSWORD: omics
+      POSTGRES_DB: omics_registry
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U omics -d omics_registry"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      OMICS_DATABASE_URL: postgresql+psycopg2://omics:omics@postgres:5432/omics_registry
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
