@@ -146,9 +146,8 @@ GitHub Actions runs all of the above, plus a Docker image build, on every push.
 
 ## What's deliberately not included
 
-- **No frontend UI.** Not in the target job description's requirements; the auto-generated `/docs` (Swagger) page serves as the exploration interface.
-- **No synthetic data.** The real ~944-patient GDC dataset was judged sufficient on its own.
-- **No Slurm/Singularity/Nextflow integration** — genuinely relevant to the target role, but out of scope for a project of this size. See below.
+- **No frontend UI.** The auto-generated `/docs` (Swagger) page serves as the exploration interface.
+- **No synthetic data.** The real ~944-patient GDC dataset was sufficient on its own.
 
 ## Future work
 
