@@ -45,3 +45,12 @@ jobs:
         env:
           OMICS_DATABASE_URL: postgresql+psycopg2://omics:omics@localhost:5432/omics_registry_test
         run: pixi run pytest
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t omics-registry .
