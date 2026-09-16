@@ -1,8 +1,8 @@
 # omics-registry
 
-A small, production-style genomics metadata, provenance, and cohort-management platform, inspired by [Isabl](https://github.com/zeng-lab/isabl_api).
+A small, production-style genomics metadata, provenance, and cohort-management platform, inspired by [Isabl](https://platform.isabl.io/).
 
-Researchers running a cancer genomics study need to know: which samples have which assays, what analyses have been run against them, and where the results live. This project models that as a relational schema, exposes it via a REST API and CLI, and — the actual point of the whole thing — lets a researcher ask "which samples have complete multimodal coverage?" and get back an analysis-ready manifest.
+Researchers running a large genomics study need to know: which samples have which assays, what analyses have been run against them, and where the results live. This project models that as a relational schema, exposes it via a REST API and CLI, and — the actual point of the whole thing — lets a researcher ask "which samples have complete multimodal coverage?" and get back an analysis-ready manifest.
 
 Built as a portfolio project targeting bioinformatics/software engineering roles, using real public cancer genomics data (not synthetic).
 
